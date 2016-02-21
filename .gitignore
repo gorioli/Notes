@@ -8,7 +8,7 @@ node_modules
 bower_components
 
 # generated files from build proccess:
-build/bundle.js
+#build/bundle.js
 /build/css/button.css
 /build/css/media.css.map
 /build/css/selfIntro.css.map
@@ -21,7 +21,7 @@ build/maps
 
 # sublime:
 *.sublime*
-.build*
+#.build*
 
 # webstorm:
 .idea/
