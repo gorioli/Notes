@@ -9,7 +9,14 @@ bower_components
 
 # generated files from build proccess:
 build/bundle.js
-build/css
+/build/css/button.css
+/build/css/media.css.map
+/build/css/selfIntro.css.map
+/build/css/selfIntro.css
+/build/css/button.css.map
+/build/css/main.css.map
+/build/css/media.css
+#build/css
 build/maps
 
 # sublime:
