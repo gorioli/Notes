@@ -13,7 +13,7 @@ module.exports = React.createClass({
             node.focus();
             var len = node.value.length;
             node.setSelectionRange(len, len);
-        }, 100);
+        }, 0);
 
     },
 

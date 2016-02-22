@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "790966ff8ad897bb9322"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5ac6c7f30008b050869c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22403,7 +22403,7 @@
 	            node.focus();
 	            var len = node.value.length;
 	            node.setSelectionRange(len, len);
-	        }, 100);
+	        }, 0);
 	    },
 	
 	    onSave: function onSave() {
