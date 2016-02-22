@@ -44,11 +44,6 @@ input[data-class*="disabled--font-color"] {
   padding: 4px;
   color: rgba(255, 255, 255, 0.78); }
 
-.ReactModal__Overlay {
-  -webkit-perspective: 600;
-  perspective: 600;
-  opacity: 0; }
-
 .ReactModal__Overlay--after-open {
   opacity: 1;
   transition: opacity 150ms ease-out; }
