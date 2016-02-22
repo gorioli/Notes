@@ -7,7 +7,7 @@ module.exports = React.createClass({
     },
 
     componentDidMount(){
-        if(navigator.userAgent.search(/android/ig)){
+        if(navigator.userAgent.search(/android/ig) > -1){
             var self = this;
             setTimeout(()=>{
                 var node = self.refs.inpTitle;

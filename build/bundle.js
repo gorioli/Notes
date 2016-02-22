@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "221d314fb547e5758512"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9e40fa5bfb5bb5fe058c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22397,7 +22397,7 @@
 	    },
 	
 	    componentDidMount: function componentDidMount() {
-	        if (navigator.userAgent.search(/android/ig)) {
+	        if (navigator.userAgent.search(/android/ig) > -1) {
 	            var self = this;
 	            setTimeout(function () {
 	                var node = self.refs.inpTitle;
