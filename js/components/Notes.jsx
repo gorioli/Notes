@@ -32,6 +32,10 @@ module.exports = React.createClass({
     },
 
     saveNote(title){
+        if(!title){
+            this.currentNote = -1;
+            return;
+        }
         var notes = this.state.notes.slice();
         if (this.currentNote > -1) {
             notes[this.currentNote] = title;

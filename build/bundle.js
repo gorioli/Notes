@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "658b9b03fbc9443896f4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3bb943a55504f0dbfd2f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20370,6 +20370,10 @@
 	    },
 	
 	    saveNote: function saveNote(title) {
+	        if (!title) {
+	            this.currentNote = -1;
+	            return;
+	        }
 	        var notes = this.state.notes.slice();
 	        if (this.currentNote > -1) {
 	            notes[this.currentNote] = title;
