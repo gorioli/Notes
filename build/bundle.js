@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e316179acff15528ead0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "790966ff8ad897bb9322"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22397,10 +22397,12 @@
 	    },
 	
 	    componentDidMount: function componentDidMount() {
-	        var _this = this;
-	
+	        var self = this;
 	        setTimeout(function () {
-	            _this.refs.inpTitle.getDOMNode().focus();
+	            var node = self.refs.inpTitle;
+	            node.focus();
+	            var len = node.value.length;
+	            node.setSelectionRange(len, len);
 	        }, 100);
 	    },
 	

@@ -7,8 +7,12 @@ module.exports = React.createClass({
     },
 
     componentDidMount(){
+        var self = this;
         setTimeout(()=>{
-            this.refs.inpTitle.getDOMNode().focus();
+            var node = self.refs.inpTitle;
+            node.focus();
+            var len = node.value.length;
+            node.setSelectionRange(len, len);
         }, 100);
 
     },
