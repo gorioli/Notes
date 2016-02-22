@@ -82,7 +82,8 @@ input[data-class*="disabled--font-color"] {
   border-radius: 5px; }
   .n-note * {
     vertical-align: middle;
-    display: table-cell; }
+    display: table-cell;
+    color: #150e5d; }
 
 .n-number {
   padding-right: 8px; }
@@ -99,7 +100,7 @@ input {
   width: 89%;
   padding: 12px;
   font-size: 20px;
-  color: #122945; }
+  color: #150e5d; }
 
 button {
   margin: 11px 0; }
