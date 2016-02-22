@@ -1,0 +1,36 @@
+@import "mixins";
+
+button {
+  border: 1px solid #25729a;
+  font-size: 23px;
+  font-family: arial, helvetica, sans-serif;
+  text-decoration: none;
+  display: block;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #3093c7;
+  width: 100%;
+  height: 41px;
+  vertical-align: middle;
+
+  @include gradient_background(#3077C7, #284F96);
+  @include border_radius(3px);
+
+  &:hover {
+    border: 1px solid #1c5675;
+    background-color: #26759e;
+    @include background_image(#5797E0, #3253b2);
+  }
+}
+
+input[data-class*="disabled"] {
+  &, &:hover {
+    border-color: #C0C4C5;
+    @include background_image(#E1E8EF, #AFB1B6);
+  }
+}
+
+input[data-class*="disabled--font-color"] {
+  color: #F7F7F7;
+}

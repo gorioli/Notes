@@ -1,0 +1,28 @@
+@import "variables";
+@import "mixins";
+
+.n-note {
+  background-color: $primary-color;
+  padding: 10px 15px;
+  border: 1px solid $border-color;
+  display: table;
+
+  * {
+    vertical-align: middle;
+    display: table-cell;
+  }
+
+  @include border_radius(5px);
+}
+
+.n-number {
+  padding-right: 8px;
+}
+
+.n-title {
+  width: 100%;
+}
+
+.n-slide-right {
+  float: right;
+}

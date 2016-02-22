@@ -1,0 +1,22 @@
+@mixin gradient_background($from, $to) {
+  background: -webkit-linear-gradient($from, $to); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($from, $to); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($from, $to); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($from, $to); /* Standard syntax */
+}
+
+@mixin border_radius($value) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+
+@mixin background_image($from, $to) {
+  background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+  background-image: -webkit-linear-gradient(top, $from, $to);
+  background-image: -moz-linear-gradient(top, $from, $to);
+  background-image: -ms-linear-gradient(top, $from, $to);
+  background-image: -o-linear-gradient(top, $from, $to);
+  background-image: linear-gradient(to bottom, $from, $to);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=$from, endColorstr=$to);
+}

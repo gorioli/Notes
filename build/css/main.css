@@ -1,27 +1,28 @@
-input[type="button"] {
+button {
   border: 1px solid #25729a;
-  font-size: 12px;
+  font-size: 23px;
   font-family: arial, helvetica, sans-serif;
-  padding: 10px 10px 10px 10px;
   text-decoration: none;
-  display: inline-block;
+  display: block;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
   font-weight: bold;
   color: #FFFFFF;
   background-color: #3093c7;
-  width: 248px;
-  height: 60px;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3077C7), to(#284F96));
-  background-image: -webkit-linear-gradient(top, #3077C7, #284F96);
-  background-image: -moz-linear-gradient(top, #3077C7, #284F96);
-  background-image: -ms-linear-gradient(top, #3077C7, #284F96);
-  background-image: -o-linear-gradient(top, #3077C7, #284F96);
-  background-image: linear-gradient(to bottom, #3077C7, #284F96);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=$from, endColorstr=$to);
+  width: 100%;
+  height: 41px;
+  vertical-align: middle;
+  background: -webkit-linear-gradient(#3077C7, #284F96);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#3077C7, #284F96);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#3077C7, #284F96);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#3077C7, #284F96);
+  /* Standard syntax */
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px; }
-  input[type="button"]:hover {
+  button:hover {
     border: 1px solid #1c5675;
     background-color: #26759e;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#5797E0), to(#3253b2));
@@ -45,60 +46,84 @@ input[data-class*="disabled"], input[data-class*="disabled"]:hover {
 input[data-class*="disabled--font-color"] {
   color: #F7F7F7; }
 
-@media screen and (min-width: 800px) {
-  br[data-class="br"] {
-    display: none; } }
-@media screen and (max-width: 800px) {
-  br[data-class="br"] {
-    display: block; }
+.n-plus {
+  font-size: 31px;
+  text-align: center; }
 
-  span[data-class="uppercase"] {
-    text-transform: uppercase; } }
-*[data-class*="special"] {
-  color: #5727b5;
-  background-color: floralwhite;
-  display: initial; }
+.ReactModal__Overlay {
+  -webkit-perspective: 600;
+  perspective: 600;
+  opacity: 0; }
+
+.ReactModal__Overlay--after-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backgroundColor: rgba(255, 255, 255, 0.75); }
+
+.ReactModal__Content--after-open {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  WebkitOverflowScrolling: touch;
+  borderRadius: 4px;
+  outline: none; }
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 150ms ease-out; }
+
+.ReactModal__Content {
+  -webkit-transform: scale(0.5) rotateX(-30deg); }
+
+.ReactModal__Content--after-open {
+  -webkit-transform: scale(1) rotateX(0deg);
+  transition: all 150ms ease-in; }
+
+.ReactModal__Overlay--before-close {
+  opacity: 0; }
+
+.ReactModal__Content--before-close {
+  -webkit-transform: scale(0.5) rotateX(30deg);
+  transition: all 150ms ease-in; }
+
+.n-note {
+  background-color: #c0cdec;
+  padding: 10px 15px;
+  border: 1px solid #3a5a94;
+  display: table;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+  .n-note * {
+    vertical-align: middle;
+    display: table-cell; }
+
+.n-number {
+  padding-right: 8px; }
+
+.n-title {
+  width: 100%; }
+
+.n-slide-right {
+  float: right; }
+
+input {
+  width: 89%;
+  padding: 12px;
+  margin: 0 0px 15px 0;
+  font-size: 20px;
+  color: #122945; }
 
 body {
-  color: #716D6D;
-  margin: auto;
-  display: table;
-  text-align: center;
-  width: 100%;
-  font-family: sans-serif;
-  font-size: 100%;
-  font-weight: 100; }
-  body header h3 {
-    margin-top: 6px;
-    margin-bottom: 17px; }
-  body section {
-    background: -webkit-linear-gradient(#F4F2F2, white);
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#F4F2F2, white);
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#F4F2F2, white);
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#F4F2F2, white);
-    /* Standard syntax */
-    border-top: 1px solid #D5D5D5; }
-  body h1, body h2, body h3, body h4, body h5, body h6, body p, body input[type="button"] {
-    font-weight: lighter;
-    line-height: 1.2em;
-    display: inline-block; }
-  body h1 {
-    font-size: 2.8em;
-    color: #084CB5;
-    letter-spacing: -2px; }
-  body h3, body input[type="button"] {
-    font-size: 1.5em;
-    letter-spacing: -0.5px; }
-  body h6 {
-    font-size: 0.85em; }
-  body footer a {
-    color: #1783b5;
-    font-size: 1.05em; }
-    body footer a:visited {
-      color: #a17cb5;
-      font-size: 1em; }
+  background-color: #605ca2;
+  font-family: Arial, Helvetica, sans-serif; }
 
 /*# sourceMappingURL=main.css.map */
