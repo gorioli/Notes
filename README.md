@@ -1,5 +1,5 @@
 ### Mobile Notes app, made with React.js
-Available at [gorioli.github.io/notes](https://gorioli.github.io/notes).
+Available at [gorioli.github.io/notes](https://gorioli.github.io/notes)
 
 #### Commands for project setting:
 Installing all dependencies:
