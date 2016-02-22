@@ -56,11 +56,6 @@ module.exports = React.createClass({
                     className="n-add">
                     Save
                 </button>
-                <button
-                    onClick={this.onTest}
-                    className="n-add">
-                    Test
-                </button>
                 {this.renderDeleteButton()}
             </div>
         );

@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ef7e7e4302cd3925594a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e316179acff15528ead0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22448,13 +22448,6 @@
 	                    onClick: this.onSave,
 	                    className: "n-add" },
 	                "Save"
-	            ),
-	            React.createElement(
-	                "button",
-	                {
-	                    onClick: this.onTest,
-	                    className: "n-add" },
-	                "Test"
 	            ),
 	            this.renderDeleteButton()
 	        );
