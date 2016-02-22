@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var node_modules = path.resolve(__dirname, 'node_modules');
+var WebpackStrip = require('webpack-strip');
 //var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
 
 var config = {
@@ -44,23 +45,16 @@ var config = {
         loaders: [
             {
                 test: /\.jsx?$/, // A regexp to test the require path. accepts either js or jsx
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
-                //loaders: ['babel-loader'],
+                exclude: [node_modules],
+                loaders: ['babel']
                 //loader: 'babel' // The module to load. "babel" is short for "babel-loader"
-            },
+            }
+            //,
             //{
-            //    test: /\.js$/,
-            //    exclude: /node_modules/,
-            //    loader: "babel-loader"
+            //    test: /\.jsx?$/,
+            //    loaders: [WebpackStrip.loader('console.log', 'console.error', 'console.table', 'console.debug', 'console.warn')]
             //}
-            //{
-            //    test: /\.png$/,
-            //    loader: "file?name=[name].[ext]"
-            //},
+
         ]
     },
 

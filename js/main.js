@@ -1,14 +1,13 @@
 'use strict';
 
-//var React = require('react');
-//var ReactDOM = require('react-dom');
-//var data = require('./data.js');
-//var ContentBox = require('./components/ContentBox.jsx');
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Notes = require('./components/Notes.jsx');
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import data from './data.js';
-import Notes from  './components/Notes.jsx';
+//import React from 'react';
+//import ReactDOM from 'react-dom';
+//import data from './data.js';
+//import Notes from  './components/Notes.jsx';
 
 (function main() {
 
@@ -28,7 +27,7 @@ import Notes from  './components/Notes.jsx';
     //console.log(a, b);
 
     ReactDOM.render(
-        <Notes data={data}/>,
+        <Notes />,
         document.getElementById('content')
     );
 })();

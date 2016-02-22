@@ -3,7 +3,18 @@
 input {
   width: 89%;
   padding: 12px;
-  margin: 0 0px 15px 0;
   font-size: 20px;
   color: $text-color;
+}
+
+button{
+  margin: 11px 0;
+
+  &.n-add{
+    @include gradient_background(#3077C7, #284F96);
+  }
+
+  &.n-delete{
+    @include gradient_background(#ff2747, #a51b2d);
+  }
 }

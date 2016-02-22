@@ -44,8 +44,16 @@ module.exports = React.createClass({
         else {
             notes.push(title);
         }
-        localStorage.setItem(this.NOTES, JSON.stringify(notes));
         this.setState({notes: notes});
+        localStorage.setItem(this.NOTES, JSON.stringify(notes));
+    },
+
+    deleteNode(){
+        var notes = this.state.notes.slice();
+        notes.splice(this.currentNote, 1);
+        this.setState({notes: notes});
+        localStorage.setItem(this.NOTES, JSON.stringify(notes));
+        this.currentNote = -1;
     },
 
     onNoteUpdate(ev){
@@ -91,6 +99,7 @@ module.exports = React.createClass({
                     <AddForm
                         closeModal={this.closeModal}
                         saveNote={this.saveNote}
+                        deleteNode={this.deleteNode}
                         title={this.currentNote > -1 ? this.state.notes[this.currentNote] : ''}
                     />
 

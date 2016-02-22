@@ -14,7 +14,6 @@ button {
   height: 41px;
   vertical-align: middle;
 
-  @include gradient_background(#3077C7, #284F96);
   @include border_radius(3px);
 
   &:hover {

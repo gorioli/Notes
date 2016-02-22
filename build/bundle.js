@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3bb943a55504f0dbfd2f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1e0798940d23bcd03886"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -672,28 +672,14 @@
 
 	'use strict';
 	
-	//var React = require('react');
-	//var ReactDOM = require('react-dom');
-	//var data = require('./data.js');
-	//var ContentBox = require('./components/ContentBox.jsx');
+	var React = __webpack_require__(4);
+	var ReactDOM = __webpack_require__(161);
+	var Notes = __webpack_require__(162);
 	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(161);
-	
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-	
-	var _data = __webpack_require__(162);
-	
-	var _data2 = _interopRequireDefault(_data);
-	
-	var _Notes = __webpack_require__(163);
-	
-	var _Notes2 = _interopRequireDefault(_Notes);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	//import React from 'react';
+	//import ReactDOM from 'react-dom';
+	//import data from './data.js';
+	//import Notes from  './components/Notes.jsx';
 	
 	(function main() {
 	
@@ -712,7 +698,7 @@
 	    //var {b, a } = { x: 1, y: 2, a: 3, b: 4 };
 	    //console.log(a, b);
 	
-	    _reactDom2.default.render(_react2.default.createElement(_Notes2.default, { data: _data2.default }), document.getElementById('content'));
+	    ReactDOM.render(React.createElement(Notes, null), document.getElementById('content'));
 	})();
 
 /***/ },
@@ -20318,32 +20304,18 @@
 
 /***/ },
 /* 162 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = {
-	    stam: "stam",
-	    txt_footer: "Footer",
-	    txt_mainConent: "Main Content",
-	    hello: "Hello World!"
-	};
-
-/***/ },
-/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var React = __webpack_require__(4);
-	var Plus = __webpack_require__(164);
-	var Modal = __webpack_require__(165);
-	var AddForm = __webpack_require__(185);
-	var Note = __webpack_require__(186);
+	var Plus = __webpack_require__(163);
+	var Modal = __webpack_require__(164);
+	var AddForm = __webpack_require__(184);
+	var Note = __webpack_require__(185);
 	
 	module.exports = React.createClass({
 	    displayName: 'exports',
-	
 	
 	    NOTES: 'NOTES',
 	    currentNote: -1,
@@ -20354,12 +20326,12 @@
 	            modalIsOpen: false
 	        };
 	    },
+	
 	    componentDidMount: function componentDidMount() {
 	        var notes = JSON.parse(localStorage.getItem(this.NOTES)) || [];
 	
 	        this.setState({ notes: notes });
 	    },
-	
 	
 	    openModal: function openModal() {
 	        this.setState({ modalIsOpen: true });
@@ -20381,9 +20353,18 @@
 	        } else {
 	            notes.push(title);
 	        }
-	        localStorage.setItem(this.NOTES, JSON.stringify(notes));
 	        this.setState({ notes: notes });
+	        localStorage.setItem(this.NOTES, JSON.stringify(notes));
 	    },
+	
+	    deleteNode: function deleteNode() {
+	        var notes = this.state.notes.slice();
+	        notes.splice(this.currentNote, 1);
+	        this.setState({ notes: notes });
+	        localStorage.setItem(this.NOTES, JSON.stringify(notes));
+	        this.currentNote = -1;
+	    },
+	
 	    onNoteUpdate: function onNoteUpdate(ev) {
 	        var self = this;
 	        if (ev.currentTarget.className.search(/n-note/) > -1) {
@@ -20396,6 +20377,7 @@
 	            });
 	        }
 	    },
+	
 	    renderNotes: function renderNotes() {
 	        var _this = this;
 	
@@ -20409,6 +20391,7 @@
 	
 	        return notes;
 	    },
+	
 	    render: function render() {
 	        return React.createElement(
 	            'div',
@@ -20422,6 +20405,7 @@
 	                React.createElement(AddForm, {
 	                    closeModal: this.closeModal,
 	                    saveNote: this.saveNote,
+	                    deleteNode: this.deleteNode,
 	                    title: this.currentNote > -1 ? this.state.notes[this.currentNote] : ''
 	                })
 	            ),
@@ -20438,7 +20422,7 @@
 	});
 
 /***/ },
-/* 164 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20447,9 +20431,11 @@
 	
 	module.exports = React.createClass({
 	    displayName: "exports",
+	
 	    onClick: function onClick() {
 	        this.props.openModal();
 	    },
+	
 	    render: function render() {
 	
 	        return React.createElement(
@@ -20466,23 +20452,23 @@
 	});
 
 /***/ },
-/* 165 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(166);
+	module.exports = __webpack_require__(165);
 	
 
 
 /***/ },
-/* 166 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(4);
 	var ReactDOM = __webpack_require__(161);
-	var ExecutionEnvironment = __webpack_require__(167);
-	var ModalPortal = React.createFactory(__webpack_require__(168));
-	var ariaAppHider = __webpack_require__(183);
-	var elementClass = __webpack_require__(184);
+	var ExecutionEnvironment = __webpack_require__(166);
+	var ModalPortal = React.createFactory(__webpack_require__(167));
+	var ariaAppHider = __webpack_require__(182);
+	var elementClass = __webpack_require__(183);
 	var renderSubtreeIntoContainer = __webpack_require__(161).unstable_renderSubtreeIntoContainer;
 	
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
@@ -20561,7 +20547,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ },
-/* 167 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -20606,14 +20592,14 @@
 
 
 /***/ },
-/* 168 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(4);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(169);
-	var scopeTab = __webpack_require__(171);
-	var Assign = __webpack_require__(172);
+	var focusManager = __webpack_require__(168);
+	var scopeTab = __webpack_require__(170);
+	var Assign = __webpack_require__(171);
 	
 	
 	// so that our CSS is statically analyzable
@@ -20810,10 +20796,10 @@
 
 
 /***/ },
-/* 169 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(170);
+	var findTabbable = __webpack_require__(169);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -20884,7 +20870,7 @@
 
 
 /***/ },
-/* 170 */
+/* 169 */
 /***/ function(module, exports) {
 
 	/*!
@@ -20940,10 +20926,10 @@
 
 
 /***/ },
-/* 171 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(170);
+	var findTabbable = __webpack_require__(169);
 	
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -20961,7 +20947,7 @@
 
 
 /***/ },
-/* 172 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20972,9 +20958,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(173),
-	    createAssigner = __webpack_require__(179),
-	    keys = __webpack_require__(175);
+	var baseAssign = __webpack_require__(172),
+	    createAssigner = __webpack_require__(178),
+	    keys = __webpack_require__(174);
 	
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -21047,7 +21033,7 @@
 
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21058,8 +21044,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(174),
-	    keys = __webpack_require__(175);
+	var baseCopy = __webpack_require__(173),
+	    keys = __webpack_require__(174);
 	
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -21080,7 +21066,7 @@
 
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports) {
 
 	/**
@@ -21118,7 +21104,7 @@
 
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21129,9 +21115,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(176),
-	    isArguments = __webpack_require__(177),
-	    isArray = __webpack_require__(178);
+	var getNative = __webpack_require__(175),
+	    isArguments = __webpack_require__(176),
+	    isArray = __webpack_require__(177);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -21360,7 +21346,7 @@
 
 
 /***/ },
-/* 176 */
+/* 175 */
 /***/ function(module, exports) {
 
 	/**
@@ -21503,7 +21489,7 @@
 
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports) {
 
 	/**
@@ -21753,7 +21739,7 @@
 
 
 /***/ },
-/* 178 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/**
@@ -21939,7 +21925,7 @@
 
 
 /***/ },
-/* 179 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21950,9 +21936,9 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var bindCallback = __webpack_require__(180),
-	    isIterateeCall = __webpack_require__(181),
-	    restParam = __webpack_require__(182);
+	var bindCallback = __webpack_require__(179),
+	    isIterateeCall = __webpack_require__(180),
+	    restParam = __webpack_require__(181);
 	
 	/**
 	 * Creates a function that assigns properties of source object(s) to a given
@@ -21997,7 +21983,7 @@
 
 
 /***/ },
-/* 180 */
+/* 179 */
 /***/ function(module, exports) {
 
 	/**
@@ -22068,7 +22054,7 @@
 
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports) {
 
 	/**
@@ -22206,7 +22192,7 @@
 
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports) {
 
 	/**
@@ -22279,7 +22265,7 @@
 
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports) {
 
 	var _element = typeof document !== 'undefined' ? document.body : null;
@@ -22326,7 +22312,7 @@
 
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -22391,7 +22377,7 @@
 
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22400,7 +22386,6 @@
 	
 	module.exports = React.createClass({
 	    displayName: "exports",
-	
 	
 	    getInitialState: function getInitialState() {
 	        return { title: this.props.title };
@@ -22411,9 +22396,27 @@
 	        this.props.closeModal();
 	    },
 	
+	    onDelete: function onDelete() {
+	        this.props.deleteNode();
+	        this.props.closeModal();
+	    },
 	
 	    handleChange: function handleChange(event) {
 	        this.setState({ title: event.target.value });
+	    },
+	
+	    renderDeleteButton: function renderDeleteButton() {
+	        if (this.props.title.length > 0) {
+	            return React.createElement(
+	                "button",
+	                {
+	                    onClick: this.onDelete,
+	                    className: "n-delete" },
+	                "Delete"
+	            );
+	        } else {
+	            return null;
+	        }
 	    },
 	
 	    render: function render() {
@@ -22429,15 +22432,17 @@
 	            React.createElement(
 	                "button",
 	                {
-	                    onClick: this.onSave },
+	                    onClick: this.onSave,
+	                    className: "n-add" },
 	                "Save"
-	            )
+	            ),
+	            this.renderDeleteButton()
 	        );
 	    }
 	});
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22446,6 +22451,7 @@
 	
 	module.exports = React.createClass({
 	    displayName: "exports",
+	
 	    render: function render() {
 	
 	        return React.createElement(
@@ -22470,6 +22476,7 @@
 	            )
 	        );
 	    }
+	
 	});
 
 /***/ }

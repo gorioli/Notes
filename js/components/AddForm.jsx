@@ -2,7 +2,7 @@ var React = require('react');
 
 module.exports = React.createClass({
 
-    getInitialState: function() {
+    getInitialState: function () {
         return {title: this.props.title};
     },
 
@@ -11,8 +11,28 @@ module.exports = React.createClass({
         this.props.closeModal();
     },
 
-    handleChange: function(event) {
+    onDelete(){
+        this.props.deleteNode();
+        this.props.closeModal();
+    },
+
+    handleChange: function (event) {
         this.setState({title: event.target.value});
+    },
+
+    renderDeleteButton(){
+        if (this.props.title.length > 0) {
+            return (
+                <button
+                    onClick={this.onDelete}
+                    className="n-delete">
+                    Delete
+                </button>
+            );
+        }
+        else {
+            return null;
+        }
     },
 
     render () {
@@ -25,9 +45,11 @@ module.exports = React.createClass({
                     onChange={this.handleChange}
                 />
                 <button
-                    onClick={this.onSave} >
+                    onClick={this.onSave}
+                    className="n-add">
                     Save
-                    </button>
+                </button>
+                {this.renderDeleteButton()}
             </div>
         );
     }
