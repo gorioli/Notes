@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "221d314fb547e5758512"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0567429cf89d68f14207"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22397,15 +22397,13 @@
 	    },
 	
 	    componentDidMount: function componentDidMount() {
-	        if (navigator.userAgent.search(/android/ig)) {
-	            var self = this;
-	            setTimeout(function () {
-	                var node = self.refs.inpTitle;
-	                node.focus();
-	                var len = node.value.length;
-	                node.setSelectionRange(len, len);
-	            }, 0);
-	        }
+	        var self = this;
+	        setTimeout(function () {
+	            var node = self.refs.inpTitle;
+	            node.focus();
+	            var len = node.value.length;
+	            node.setSelectionRange(len, len);
+	        }, 0);
 	    },
 	
 	    onSave: function onSave() {

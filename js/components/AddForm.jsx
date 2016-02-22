@@ -7,16 +7,13 @@ module.exports = React.createClass({
     },
 
     componentDidMount(){
-        if(navigator.userAgent.search(/android/ig)){
-            var self = this;
-            setTimeout(()=>{
-                var node = self.refs.inpTitle;
-                node.focus();
-                var len = node.value.length;
-                node.setSelectionRange(len, len);
-            }, 0);
-
-        }
+        var self = this;
+        setTimeout(()=> {
+            var node = self.refs.inpTitle;
+            node.focus();
+            var len = node.value.length;
+            node.setSelectionRange(len, len);
+        }, 0);
     },
 
     onSave(){
