@@ -83,7 +83,7 @@ input[data-class*="disabled--font-color"] {
   .n-note * {
     vertical-align: middle;
     display: table-cell;
-    color: #150e5d; }
+    color: #d7d700; }
 
 .n-number {
   padding-right: 8px; }
@@ -100,7 +100,7 @@ input {
   width: 89%;
   padding: 12px;
   font-size: 20px;
-  color: #150e5d; }
+  color: #d7d700; }
 
 button {
   margin: 11px 0; }
