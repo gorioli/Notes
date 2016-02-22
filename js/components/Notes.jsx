@@ -1,13 +1,18 @@
 var React = require('react');
 var Plus = require('./Plus.jsx');
+var Modal = require('react-modal');
+var AddForm = require('./AddForm.jsx');
+var Note = require('./Note.jsx');
 
 module.exports = React.createClass({
 
     NOTES: 'NOTES',
+    currentNote: -1,
 
     getInitialState(){
         return {
-            notes: []
+            notes: [],
+            modalIsOpen: false
         }
     },
 
@@ -18,29 +23,53 @@ module.exports = React.createClass({
 
     },
 
+    openModal: function () {
+        this.setState({modalIsOpen: true});
+    },
+
+    closeModal: function () {
+        this.setState({modalIsOpen: false});
+    },
+
     saveNote(title){
         var notes = this.state.notes.slice();
-        notes.push(title);
+        if (this.currentNote > -1) {
+            notes[this.currentNote] = title;
+            this.currentNote = -1;
+        }
+        else {
+            notes.push(title);
+        }
         localStorage.setItem(this.NOTES, JSON.stringify(notes));
         this.setState({notes: notes});
+    },
+
+    onNoteUpdate(ev){
+        var self = this;
+        if (ev.currentTarget.className.search(/n-note/) > -1) {
+            Array.prototype.forEach
+                .call(ev.currentTarget.attributes,
+                    att => {
+                        if (att.name == "data-id") {
+                            self.currentNote = parseInt(att.value);
+                            self.setState({modalIsOpen: true});
+                            ev.stopPropagation();
+                        }
+                    });
+        }
     },
 
     renderNotes(){
 
         var notes = this.state.notes.map((note, i) => {
             return (
-                <div className="n-note"
+                <Note
+                    id={i}
+                    onNoteUpdate={this.onNoteUpdate}
+                    title={note}
                     key={'note_' + i}>
-                    <span className="n-number">
-                        {i + 1}
-                    </span>
-                    <span className="n-title">
-                        {note}
-                    </span>
-                    <span className="n-slide-right">
-                        <i className="fa fa-chevron-right"></i>
-                    </span>
-                </div>
+
+                </Note>
             );
         });
 
@@ -50,9 +79,22 @@ module.exports = React.createClass({
     render () {
         return (
             <div>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={this.closeModal}
+                >
+
+                    <AddForm
+                        closeModal={this.closeModal}
+                        saveNote={this.saveNote}
+                        title={this.currentNote > -1 ? this.state.notes[this.currentNote] : ''}
+                    />
+
+                </Modal>
+
                 <section>
                     <Plus
-                        saveNote={this.saveNote}
+                        openModal={this.openModal}
                     />
 
                     {this.renderNotes()}

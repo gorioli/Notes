@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1ad742bf4b164ed26ba6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "658b9b03fbc9443896f4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20337,94 +20337,27 @@
 	
 	var React = __webpack_require__(4);
 	var Plus = __webpack_require__(164);
+	var Modal = __webpack_require__(165);
+	var AddForm = __webpack_require__(185);
+	var Note = __webpack_require__(186);
 	
 	module.exports = React.createClass({
 	    displayName: 'exports',
 	
 	
 	    NOTES: 'NOTES',
+	    currentNote: -1,
 	
 	    getInitialState: function getInitialState() {
 	        return {
-	            notes: []
+	            notes: [],
+	            modalIsOpen: false
 	        };
 	    },
 	    componentDidMount: function componentDidMount() {
 	        var notes = JSON.parse(localStorage.getItem(this.NOTES)) || [];
 	
 	        this.setState({ notes: notes });
-	    },
-	    saveNote: function saveNote(title) {
-	        var notes = this.state.notes.slice();
-	        notes.push(title);
-	        localStorage.setItem(this.NOTES, JSON.stringify(notes));
-	        this.setState({ notes: notes });
-	    },
-	    renderNotes: function renderNotes() {
-	
-	        var notes = this.state.notes.map(function (note, i) {
-	            return React.createElement(
-	                'div',
-	                { className: 'n-note',
-	                    key: 'note_' + i },
-	                React.createElement(
-	                    'span',
-	                    { className: 'n-number' },
-	                    i + 1
-	                ),
-	                React.createElement(
-	                    'span',
-	                    { className: 'n-title' },
-	                    note
-	                ),
-	                React.createElement(
-	                    'span',
-	                    { className: 'n-slide-right' },
-	                    React.createElement('i', { className: 'fa fa-chevron-right' })
-	                )
-	            );
-	        });
-	
-	        return notes;
-	    },
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            null,
-	            React.createElement(
-	                'section',
-	                null,
-	                React.createElement(Plus, {
-	                    saveNote: this.saveNote
-	                }),
-	                this.renderNotes()
-	            )
-	        );
-	    }
-	});
-
-/***/ },
-/* 164 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	var React = __webpack_require__(4);
-	var Modal = __webpack_require__(165);
-	var AddForm = __webpack_require__(185);
-	
-	module.exports = React.createClass({
-	    displayName: 'exports',
-	
-	
-	    getInitialState: function getInitialState() {
-	        return { modalIsOpen: false };
-	    },
-	
-	    onAdd: function onAdd() {
-	        this.openModal();
 	    },
 	
 	
@@ -20436,8 +20369,43 @@
 	        this.setState({ modalIsOpen: false });
 	    },
 	
-	    render: function render() {
+	    saveNote: function saveNote(title) {
+	        var notes = this.state.notes.slice();
+	        if (this.currentNote > -1) {
+	            notes[this.currentNote] = title;
+	            this.currentNote = -1;
+	        } else {
+	            notes.push(title);
+	        }
+	        localStorage.setItem(this.NOTES, JSON.stringify(notes));
+	        this.setState({ notes: notes });
+	    },
+	    onNoteUpdate: function onNoteUpdate(ev) {
+	        var self = this;
+	        if (ev.currentTarget.className.search(/n-note/) > -1) {
+	            Array.prototype.forEach.call(ev.currentTarget.attributes, function (att) {
+	                if (att.name == "data-id") {
+	                    self.currentNote = parseInt(att.value);
+	                    self.setState({ modalIsOpen: true });
+	                    ev.stopPropagation();
+	                }
+	            });
+	        }
+	    },
+	    renderNotes: function renderNotes() {
+	        var _this = this;
 	
+	        var notes = this.state.notes.map(function (note, i) {
+	            return React.createElement(Note, {
+	                id: i,
+	                onNoteUpdate: _this.onNoteUpdate,
+	                title: note,
+	                key: 'note_' + i });
+	        });
+	
+	        return notes;
+	    },
+	    render: function render() {
 	        return React.createElement(
 	            'div',
 	            null,
@@ -20447,15 +20415,47 @@
 	                    isOpen: this.state.modalIsOpen,
 	                    onRequestClose: this.closeModal
 	                },
-	                React.createElement(AddForm, _extends({
-	                    closeModal: this.closeModal
-	                }, this.props))
+	                React.createElement(AddForm, {
+	                    closeModal: this.closeModal,
+	                    saveNote: this.saveNote,
+	                    title: this.currentNote > -1 ? this.state.notes[this.currentNote] : ''
+	                })
 	            ),
 	            React.createElement(
-	                'div',
-	                { className: 'n-icon n-plus',
-	                    onClick: this.onAdd },
-	                React.createElement('i', { className: 'fa fa-plus-square' })
+	                'section',
+	                null,
+	                React.createElement(Plus, {
+	                    openModal: this.openModal
+	                }),
+	                this.renderNotes()
+	            )
+	        );
+	    }
+	});
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(4);
+	
+	module.exports = React.createClass({
+	    displayName: "exports",
+	    onClick: function onClick() {
+	        this.props.openModal();
+	    },
+	    render: function render() {
+	
+	        return React.createElement(
+	            "div",
+	            null,
+	            React.createElement(
+	                "div",
+	                { className: "n-icon n-plus",
+	                    onClick: this.onClick },
+	                React.createElement("i", { className: "fa fa-plus-square" })
 	            )
 	        );
 	    }
@@ -22396,24 +22396,73 @@
 	
 	module.exports = React.createClass({
 	    displayName: "exports",
+	
+	
+	    getInitialState: function getInitialState() {
+	        return { title: this.props.title };
+	    },
+	
 	    onSave: function onSave() {
-	        var value = this.refs.inpTitle.value;
-	        this.props.saveNote(value);
+	        this.props.saveNote(this.state.title);
 	        this.props.closeModal();
 	    },
+	
+	
+	    handleChange: function handleChange(event) {
+	        this.setState({ title: event.target.value });
+	    },
+	
 	    render: function render() {
 	        return React.createElement(
 	            "div",
 	            null,
 	            React.createElement("input", {
 	                placeholder: "Note title here",
-	                ref: "inpTitle"
+	                ref: "inpTitle",
+	                value: this.state.title,
+	                onChange: this.handleChange
 	            }),
 	            React.createElement(
 	                "button",
 	                {
 	                    onClick: this.onSave },
 	                "Save"
+	            )
+	        );
+	    }
+	});
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(4);
+	
+	module.exports = React.createClass({
+	    displayName: "exports",
+	    render: function render() {
+	
+	        return React.createElement(
+	            "div",
+	            { className: "n-note",
+	                onClick: this.props.onNoteUpdate,
+	                "data-id": this.props.id },
+	            React.createElement(
+	                "span",
+	                { className: "n-number" },
+	                this.props.id + 1
+	            ),
+	            React.createElement(
+	                "span",
+	                { className: "n-title" },
+	                this.props.title
+	            ),
+	            React.createElement(
+	                "span",
+	                { className: "n-slide-right" },
+	                React.createElement("i", { className: "fa fa-chevron-right" })
 	            )
 	        );
 	    }

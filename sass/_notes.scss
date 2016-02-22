@@ -2,10 +2,15 @@
 @import "mixins";
 
 .n-note {
-  background-color: $primary-color;
+  background-color: #c0cdec;
   padding: 10px 15px;
-  border: 1px solid $border-color;
+  height: 42px;
+  border: 1px solid #3a5a94;
   display: table;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 21px;
 
   * {
     vertical-align: middle;
@@ -25,4 +30,6 @@
 
 .n-slide-right {
   float: right;
+  position: relative;
+  top: 8px;
 }

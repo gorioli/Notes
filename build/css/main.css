@@ -47,8 +47,10 @@ input[data-class*="disabled--font-color"] {
   color: #F7F7F7; }
 
 .n-plus {
-  font-size: 31px;
-  text-align: center; }
+  font-size: 67px;
+  text-align: center;
+  padding: 4px;
+  color: rgba(255, 255, 255, 0.78); }
 
 .ReactModal__Overlay {
   -webkit-perspective: 600;
@@ -97,8 +99,13 @@ input[data-class*="disabled--font-color"] {
 .n-note {
   background-color: #c0cdec;
   padding: 10px 15px;
+  height: 42px;
   border: 1px solid #3a5a94;
   display: table;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 21px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
@@ -113,7 +120,9 @@ input[data-class*="disabled--font-color"] {
   width: 100%; }
 
 .n-slide-right {
-  float: right; }
+  float: right;
+  position: relative;
+  top: 8px; }
 
 input {
   width: 89%;

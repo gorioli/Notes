@@ -2,10 +2,17 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+    getInitialState: function() {
+        return {title: this.props.title};
+    },
+
     onSave(){
-        var value = this.refs.inpTitle.value;
-        this.props.saveNote(value);
+        this.props.saveNote(this.state.title);
         this.props.closeModal();
+    },
+
+    handleChange: function(event) {
+        this.setState({title: event.target.value});
     },
 
     render () {
@@ -14,6 +21,8 @@ module.exports = React.createClass({
                 <input
                     placeholder="Note title here"
                     ref="inpTitle"
+                    value={this.state.title}
+                    onChange={this.handleChange}
                 />
                 <button
                     onClick={this.onSave} >
