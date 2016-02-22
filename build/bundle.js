@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1b703b77f4d3c669d5dc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ef7e7e4302cd3925594a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22396,6 +22396,14 @@
 	        return { title: this.props.title };
 	    },
 	
+	    componentDidMount: function componentDidMount() {
+	        var _this = this;
+	
+	        setTimeout(function () {
+	            _this.refs.inpTitle.getDOMNode().focus();
+	        }, 100);
+	    },
+	
 	    onSave: function onSave() {
 	        this.props.saveNote(this.state.title);
 	        this.props.closeModal();
@@ -22440,6 +22448,13 @@
 	                    onClick: this.onSave,
 	                    className: "n-add" },
 	                "Save"
+	            ),
+	            React.createElement(
+	                "button",
+	                {
+	                    onClick: this.onTest,
+	                    className: "n-add" },
+	                "Test"
 	            ),
 	            this.renderDeleteButton()
 	        );

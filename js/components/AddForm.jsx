@@ -6,6 +6,13 @@ module.exports = React.createClass({
         return {title: this.props.title};
     },
 
+    componentDidMount(){
+        setTimeout(()=>{
+            this.refs.inpTitle.getDOMNode().focus();
+        }, 100);
+
+    },
+
     onSave(){
         this.props.saveNote(this.state.title);
         this.props.closeModal();
@@ -48,6 +55,11 @@ module.exports = React.createClass({
                     onClick={this.onSave}
                     className="n-add">
                     Save
+                </button>
+                <button
+                    onClick={this.onTest}
+                    className="n-add">
+                    Test
                 </button>
                 {this.renderDeleteButton()}
             </div>
