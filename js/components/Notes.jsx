@@ -89,11 +89,20 @@ module.exports = React.createClass({
     },
 
     render () {
+        const customStyles = {
+            content : {
+                top                        : '10%',
+                left                       : '20',
+                right                      : '20',
+                bottom                     : '15%',
+            }
+        };
         return (
             <div>
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
+                    style={customStyles}
                 >
 
                     <AddForm

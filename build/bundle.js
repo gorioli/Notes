@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1e0798940d23bcd03886"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ce1ddff46883b1dec07c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20393,6 +20393,14 @@
 	    },
 	
 	    render: function render() {
+	        var customStyles = {
+	            content: {
+	                top: '10%',
+	                left: '20',
+	                right: '20',
+	                bottom: '15%'
+	            }
+	        };
 	        return React.createElement(
 	            'div',
 	            null,
@@ -20400,7 +20408,8 @@
 	                Modal,
 	                {
 	                    isOpen: this.state.modalIsOpen,
-	                    onRequestClose: this.closeModal
+	                    onRequestClose: this.closeModal,
+	                    style: customStyles
 	                },
 	                React.createElement(AddForm, {
 	                    closeModal: this.closeModal,
