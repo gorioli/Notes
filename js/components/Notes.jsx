@@ -40,7 +40,7 @@ module.exports = React.createClass({
             this.currentNote = -1;
         }
         else {
-            notes.push(title);
+            notes.unshift(title);
         }
         this.setState({notes: notes});
         localStorage.setItem(this.NOTES, JSON.stringify(notes));

@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5ac6c7f30008b050869c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "0567429cf89d68f14207"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20350,7 +20350,7 @@
 	            notes[this.currentNote] = title;
 	            this.currentNote = -1;
 	        } else {
-	            notes.push(title);
+	            notes.unshift(title);
 	        }
 	        this.setState({ notes: notes });
 	        localStorage.setItem(this.NOTES, JSON.stringify(notes));
@@ -22474,11 +22474,6 @@
 	            { className: "n-note",
 	                onClick: this.props.onNoteUpdate,
 	                "data-id": this.props.id },
-	            React.createElement(
-	                "span",
-	                { className: "n-number" },
-	                this.props.id + 1
-	            ),
 	            React.createElement(
 	                "span",
 	                { className: "n-title" },

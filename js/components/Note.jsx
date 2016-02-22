@@ -10,9 +10,6 @@ module.exports = React.createClass({
                  onClick={this.props.onNoteUpdate}
                  data-id={this.props.id}>
 
-                    <span className="n-number">
-                        {this.props.id + 1}
-                    </span>
                     <span className="n-title">
                         {this.props.title}
                     </span>
