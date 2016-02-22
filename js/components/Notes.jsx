@@ -18,9 +18,7 @@ module.exports = React.createClass({
 
     componentDidMount () {
         var notes = JSON.parse(localStorage.getItem(this.NOTES)) || [];
-
         this.setState({notes: notes});
-
     },
 
     openModal: function () {
@@ -102,23 +100,18 @@ module.exports = React.createClass({
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
-                    style={customStyles}
-                >
+                    style={customStyles}>
 
                     <AddForm
                         closeModal={this.closeModal}
                         saveNote={this.saveNote}
                         deleteNode={this.deleteNode}
-                        title={this.currentNote > -1 ? this.state.notes[this.currentNote] : ''}
-                    />
-
+                        title={this.currentNote > -1 ? this.state.notes[this.currentNote] : ''}/>
                 </Modal>
 
                 <section>
                     <Plus
-                        openModal={this.openModal}
-                    />
-
+                        openModal={this.openModal}/>
                     {this.renderNotes()}
                 </section>
             </div>

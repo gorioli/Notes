@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ce1ddff46883b1dec07c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4dca62d02eae8426ed11"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20329,7 +20329,6 @@
 	
 	    componentDidMount: function componentDidMount() {
 	        var notes = JSON.parse(localStorage.getItem(this.NOTES)) || [];
-	
 	        this.setState({ notes: notes });
 	    },
 	
@@ -20409,21 +20408,18 @@
 	                {
 	                    isOpen: this.state.modalIsOpen,
 	                    onRequestClose: this.closeModal,
-	                    style: customStyles
-	                },
+	                    style: customStyles },
 	                React.createElement(AddForm, {
 	                    closeModal: this.closeModal,
 	                    saveNote: this.saveNote,
 	                    deleteNode: this.deleteNode,
-	                    title: this.currentNote > -1 ? this.state.notes[this.currentNote] : ''
-	                })
+	                    title: this.currentNote > -1 ? this.state.notes[this.currentNote] : '' })
 	            ),
 	            React.createElement(
 	                'section',
 	                null,
 	                React.createElement(Plus, {
-	                    openModal: this.openModal
-	                }),
+	                    openModal: this.openModal }),
 	                this.renderNotes()
 	            )
 	        );
