@@ -89,7 +89,7 @@ module.exports = React.createClass({
     render () {
         const customStyles = {
             content : {
-                top                        : '10%',
+                top                        : '2%',
                 left                       : '20',
                 right                      : '20',
                 bottom                     : '15%',
